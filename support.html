@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Support | Bippo</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f5f2;
+    color: #25242a;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.support-nav {
+    width: 100%;
+    padding: 20px 7%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #f7f5f2;
+    border-bottom: 1px solid #e5e1dc;
+}
+
+.support-brand span {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.support-links {
+    display: flex;
+    gap: 32px;
+}
+
+.support-links a {
+    text-decoration: none;
+    color: #555158;
+    font-size: 14px;
+}
+
+.support-links a:hover,
+.support-links a.active {
+    color: #25242a;
+    font-weight: 600;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.support-header {
+    max-width: 850px;
+    margin: 90px auto 70px;
+    padding: 0 25px;
+
+    text-align: center;
+}
+
+.support-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+
+    color: #8b718c;
+
+    margin-bottom: 18px;
+}
+
+.support-header h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    margin-bottom: 22px;
+}
+
+.support-header > p:last-child {
+    max-width: 600px;
+    margin: auto;
+
+    color: #706b71;
+    font-size: 17px;
+}
+
+
+/* =========================
+   COMMON SECTIONS
+========================= */
+
+.support-circle,
+.immediate-support,
+.human-support {
+    width: 86%;
+    max-width: 1050px;
+
+    margin: 0 auto 80px;
+}
+
+.section-heading {
+    display: flex;
+    gap: 25px;
+
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+}
+
+.section-heading > span,
+.section-number {
+    font-size: 12px;
+
+    color: #8b718c;
+
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.section-heading h2,
+.immediate-support h2,
+.human-support h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.section-heading p {
+    color: #777177;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   SUPPORT CIRCLE
+========================= */
+
+.people-container {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 18px;
+}
+
+.person-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e1dc;
+    border-radius: 18px;
+
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    transition: 0.25s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-3px);
+}
+
+.person-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #e9e1e8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+
+    color: #675768;
+}
+
+.person-info {
+    flex: 1;
+}
+
+.person-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.person-info p {
+    font-size: 13px;
+    color: #888188;
+}
+
+.person-card button {
+    border: none;
+
+    background: #29272d;
+    color: white;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.add-person {
+    min-height: 96px;
+
+    border: 1px dashed #bdb5bc;
+    border-radius: 18px;
+
+    background: transparent;
+
+    color: #625b62;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.add-person span {
+    font-size: 23px;
+}
+
+.add-person:hover {
+    background: white;
+}
+
+
+/* =========================
+   IMMEDIATE SUPPORT
+========================= */
+
+.immediate-support {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+    padding: 55px;
+
+    background: #ece8e5;
+
+    border-radius: 25px;
+}
+
+.immediate-support h2 {
+    margin: 8px 0 15px;
+}
+
+.immediate-support > div:first-child > p:last-child {
+    color: #706b71;
+
+    max-width: 480px;
+}
+
+
+/* =========================
+   HELPLINE CARD
+========================= */
+
+.helpline-card {
+    background: #ffffff;
+
+    padding: 32px;
+
+    border-radius: 20px;
+
+    border: 1px solid #ddd7d2;
+}
+
+.helpline-label {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #8b718c;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+.helpline-card h3 {
+    font-size: 25px;
+
+    margin-bottom: 5px;
+}
+
+.helpline-card p {
+    color: #777177;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+.helpline-card strong {
+    display: block;
+
+    font-size: 19px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 3px;
+}
+
+.support-button {
+    margin-top: 20px;
+
+    border: none;
+
+    background: #29272d;
+
+    color: white;
+
+    padding: 11px 22px;
+
+    border-radius: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   WHEN BIPPO ISN'T ENOUGH
+========================= */
+
+.human-support {
+    text-align: center;
+
+    max-width: 800px;
+
+    padding: 40px 20px 100px;
+}
+
+.human-support h2 {
+    margin: 10px 0 15px;
+}
+
+.human-support > p:not(.section-number) {
+    color: #706b71;
+
+    max-width: 650px;
+
+    margin: 0 auto 28px;
+}
+
+.support-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.support-actions button {
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid #cfc7ce;
+
+    background: white;
+
+    color: #37343a;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .support-nav {
+        padding: 18px 5%;
+    }
+
+    .support-links {
+        gap: 15px;
+    }
+
+    .support-header {
+        margin-top: 60px;
+    }
+
+    .support-header h1 {
+        font-size: 36px;
+    }
+
+    .people-container {
+        grid-template-columns: 1fr;
+    }
+
+    .immediate-support {
+        grid-template-columns: 1fr;
+
+        padding: 30px 22px;
+
+        gap: 30px;
+    }
+
+    .support-circle,
+    .immediate-support,
+    .human-support {
+        width: 90%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="support-nav">
+
+        <div class="support-brand">
+            <span>Bippo</span>
+        </div>
+
+        <div class="support-links">
+
+            <a href="index.html">Home</a>
+            <a href="diary.html">Diary</a>
+            <a href="support.html" class="active">Support</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <header class="support-header">
+
+        <p class="support-label">SUPPORT</p>
+
+        <h1>A little more help,<br>when you need it.</h1>
+
+        <p>
+            You don't have to handle everything on your own.
+            Choose the kind of support that feels right for you.
+        </p>
+
+    </header>
+
+
+    <!-- SUPPORT CIRCLE -->
+
+    <section class="support-circle">
+
+        <div class="section-heading">
+
+            <span>01</span>
+
+            <div>
+                <h2>Your Support Circle</h2>
+
+                <p>
+                    People you choose to be there for you.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="people-container">
+
+            <div class="person-card">
+
+                <div class="person-icon">M</div>
+
+                <div class="person-info">
+
+                    <h3>Mom</h3>
+                    <p>Parent</p>
+
+                </div>
+
+                <button>Call</button>
+
+            </div>
+
+
+            <div class="person-card">
+
+                <div class="person-icon">F</div>
+
+                <div class="person-info">
+
+                    <h3>Best Friend</h3>
+                    <p>Friend</p>
+
+                </div>
+
+                <button>Call</button>
+
+            </div>
+
+
+            <button class="add-person">
+
+                <span>+</span>
+
+                Add someone you trust
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMMEDIATE SUPPORT -->
+
+    <section class="immediate-support">
+
+        <div>
+
+            <p class="section-number">02</p>
+
+            <h2>Need immediate support?</h2>
+
+            <p>
+                If you feel that talking to someone trained
+                to help would be useful, professional support
+                is available.
+            </p>
+
+        </div>
+
+
+        <div class="helpline-card">
+
+            <p class="helpline-label">PROFESSIONAL SUPPORT</p>
+
+            <h3>Tele-MANAS</h3>
+
+            <p>
+                Government mental-health support service
+            </p>
+
+            <strong>14416</strong>
+
+            <strong>1-800-891-4416</strong>
+
+            <button class="support-button">
+                Get Support
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHEN BIPPO ISN'T ENOUGH -->
+
+    <section class="human-support">
+
+        <p class="section-number">03</p>
+
+        <h2>When Bippo isn't enough</h2>
+
+        <p>
+            Bippo can listen, help you pause and remind you
+            that you don't have to handle everything alone.
+            But sometimes the best next step is talking
+            to a real person.
+        </p>
+
+        <div class="support-actions">
+
+            <button>Contact someone I trust</button>
+
+            <button>Find professional support</button>
+
+        </div>
+
+    </section>
+
+
+    <script src="support.js"></script>
+
+</body>
+
+</html>

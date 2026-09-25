@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bippo-An empathatic AI companion</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .bippo-message {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+    }
+
+    .bippo-message.show {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+</head>
+
+<body>
+
+
+<nav class="nav">
+
+
+
+        <div class="brand">
+
+    <img src="Firefly_RemoveBackground.png" alt="Bippo logo">
+    
+
+    
+
+</div>
+
+<div class="nav-links">
+   <a href="index.html">HOME</a>
+    <a href="chat.html">CHAT</a>
+       <a href="mood-diary.html">DAILY DIARY</a>
+          <a href="explore.html">EXPLORE</a>
+            <a href="support.html">SUPPORT</a>
+            </div>
+            <div class="buttons">
+                <a href="signup.html">
+                <button class="btn">sign in</button>
+                </a>
+
+            </div>
+
+        
+</nav>
+
+
+
+
+
+<div class="hero-banner">
+    <img src="ChatGPT Image Sep 20, 2026, 07_10_05 AM.png " alt="bippo hero banner"
+ </div>
+    <main class="bippo-container">
+
+        <h1>How are you feeling today?</h1>
+
+        <p>Pick the mood that feels closest to you.</p>
+
+        <div class="mood-container">
+
+            <button class="mood-card" data-mood="very-low">
+                <img src="very low.jpeg" alt="Very low mood">
+                <span>Very Low</span>
+            </button>
+
+            <button class="mood-card" data-mood="low">
+                <img src="low.jpeg" alt="Low mood">
+                <span>Low</span>
+            </button>
+
+            <button class="mood-card" data-mood="neutral">
+                <img src="neutral.jpeg" alt="Neutral mood">
+                <span>Okay-ish</span>
+            </button>
+
+            <button class="mood-card" data-mood="good">
+                <img src="good.jpeg" alt="Good mood">
+                <span>Good</span>
+            </button>
+
+            <button class="mood-card" data-mood="very-good">
+                <img src="very good.jpeg" alt="Very good mood">
+                <span>Very Good</span>
+            </button>
+
+        </div>
+
+        <div class="bippo-message">
+            
+            <p id="mood-message">
+                Choose a mood and Bippo will be here for you. 💛
+            </p>
+        </div>
+
+    </main>
+    <!-- Tiny Break Game -->
+<section class="tiny-break">
+
+    <h2>Take a Tiny Break with Bippo ✨</h2>
+
+    <p class="tiny-break-subtitle">
+        Hey! Follow Bippo and catch 3 little thoughts. 💜
+    </p>
+
+    <div class="game-area" id="gameArea">
+
+        <!-- Bippo -->
+        <img
+            src="gamepng.png"
+            alt="Bippo"
+            id="gameBippo"
+            class="game-bippo"
+        >
+
+        <!-- Thought bubble -->
+        <div id="thoughtBubble" class="thought-bubble">
+            breathe 🌿
+        </div>
+
+    </div>
+
+    <p id="gameMessage" class="game-message">
+        Catch Bippo to begin! ✨
+    </p>
+
+    <button id="startGame" class="start-game-btn">
+        Start Tiny Break
+    </button>
+
+</section>
+
+    <script src="moodscale.js"></script>
+
+</body>
+
+</html>

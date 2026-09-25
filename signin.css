@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background: #f6f3ee;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+
+/* MAIN BOX */
+
+.container {
+    position: relative;
+
+    width: 900px;
+    max-width: 100%;
+
+    min-height: 550px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.form-container {
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.6s ease-in-out;
+}
+
+
+.form-container form {
+    width: 70%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* SIGN IN */
+
+.sign-in-container {
+    left: 0;
+
+    z-index: 2;
+}
+
+
+/* SIGN UP */
+
+.sign-up-container {
+    left: 0;
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+
+/* HEADINGS */
+
+.form-container h1 {
+    margin-bottom: 25px;
+
+    font-size: 32px;
+
+    color: #333;
+}
+
+
+/* INPUTS */
+
+input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    margin: 7px 0;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #f1f1f1;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+
+/* FORGOT PASSWORD */
+
+.form-container a {
+    margin: 15px 0;
+
+    color: #555;
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+
+/* FORM BUTTON */
+
+.form-container form button {
+    margin-top: 15px;
+
+    padding: 13px 35px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #6c63ff;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   SLIDING OVERLAY
+========================= */
+
+.overlay-container {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 50%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 100;
+
+    transition: transform 0.6s ease-in-out;
+}
+
+
+.overlay {
+    position: relative;
+
+    left: -100%;
+
+    width: 200%;
+    height: 100%;
+
+    background: #6c63ff;
+
+    color: white;
+
+    transform: translateX(0);
+
+    transition: transform 0.6s ease-in-out;
+}
+
+
+/* =========================
+   OVERLAY PANELS
+========================= */
+
+.overlay-panel {
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px;
+}
+
+
+.overlay-panel h1 {
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+
+.overlay-panel p {
+    max-width: 280px;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* LEFT */
+
+.overlay-left {
+    left: 0;
+}
+
+
+/* RIGHT */
+
+.overlay-right {
+    right: 0;
+}
+
+
+/* =========================
+   GHOST BUTTON
+========================= */
+
+.ghost {
+    padding: 12px 35px;
+
+    background: transparent;
+
+    border: 1px solid white;
+
+    border-radius: 25px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   SLIDE ANIMATION
+========================= */
+
+
+/* Move Sign In away */
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+
+    opacity: 0;
+}
+
+
+/* Bring Sign Up in */
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+
+    opacity: 1;
+
+    z-index: 5;
+}
+
+
+/* Move the purple panel */
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+
+/* Move content inside purple panel */
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}

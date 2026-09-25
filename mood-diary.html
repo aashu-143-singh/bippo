@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bippo's Memory Tickets</title>
+
+    <link rel="stylesheet" href="diary.css">
+</head>
+
+<body>
+
+    <h1>Bippo's Memory Tickets</h1>
+
+    <p class="subtitle">
+        Some days are felt, some are remembered, some are simply written.
+    </p>
+
+
+    <!-- New Memory Ticket -->
+
+    <div class="ticket">
+
+        <h2>BIPPO</h2>
+        <h3>MEMORY TICKET</h3>
+
+        <div class="line"></div>
+
+
+        <label for="date">Choose a date:</label>
+
+        <input type="date" id="date">
+
+
+        <p class="memory-question">
+        Put into words whatever your heart wants to say today...
+        </p>
+
+
+        <textarea
+            id="memory"
+            placeholder="Write something you want to remember...">
+        </textarea>
+
+
+        <br>
+
+
+        <button id="saveTicket">
+            Save Ticket
+        </button>
+
+    </div>
+
+
+    <!-- Saved Memory Tickets -->
+
+    <h2 class="saved-title">
+        My Memory Tickets
+    </h2>
+
+    <div id="savedTickets"></div>
+
+
+    <!-- JavaScript -->
+
+    <script src="diary.js"></script>
+
+</body>
+
+</html>
