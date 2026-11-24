@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bippo - Your Mental Wellness Companion</title>
+
+    <link rel="stylesheet" href="chat.css" />
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">B</div>
+                    <span>Bippo</span>
+                </div>
+
+                <button class="new-chat-btn" id="newChatBtn">
+                    + New conversation
+                </button>
+            </div>
+
+            <div class="sidebar-content">
+                <p class="sidebar-label">YOUR SPACE</p>
+
+                <div class="sidebar-item active">
+                    <span>💬</span>
+                    <span>Current conversation</span>
+                </div>
+
+                <div class="sidebar-item" id="historyBtn">
+                    <span>🕘</span>
+                    <span>Conversation history</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="support-card">
+                    <div class="support-icon">♡</div>
+
+                    <div>
+                        <h4>A little reminder</h4>
+                        <p>You don't have to figure everything out at once.</p>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-avatar">U</div>
+
+                    <div class="profile-info">
+                        <p class="profile-name">You</p>
+                        <span>Your personal space</span>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Chat -->
+        <main class="chat-main">
+
+            <!-- Top Navbar -->
+            <header class="chat-header">
+
+                <button class="menu-btn" id="menuBtn" aria-label="Toggle sidebar">
+                    ☰
+                </button>
+
+                <div class="bot-info">
+                    <div class="bot-avatar">
+                        <span>B</span>
+                        <div class="online-dot"></div>
+                    </div>
+
+                    <div>
+                        <h2>Bippo</h2>
+                        <p>Your mental wellness companion</p>
+                    </div>
+                </div>
+
+                <button class="header-action" id="clearChatBtn">
+                    Clear chat
+                </button>
+
+            </header>
+
+
+            <!-- Messages Section -->
+            <section class="chat-messages" id="chatMessages">
+
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+
+                    <div class="welcome-avatar">
+                        <span>B</span>
+                    </div>
+
+                    <h1>Hey, I'm Bippo. <span>♡</span></h1>
+
+                    <p class="welcome-description">
+                        A safe space to talk, feel, reflect, and simply be yourself.
+                        You don't need to have the perfect words.
+                    </p>
+
+                    <div class="suggestion-container">
+
+                        <button class="suggestion-card" data-message="I'm feeling stressed lately.">
+                            <span class="suggestion-icon">☁</span>
+                            <span>
+                                <strong>I'm feeling stressed</strong>
+                                <small>Let's talk about what's on your mind.</small>
+                            </span>
+                        </button>
+
+                        <button class="suggestion-card" data-message="I need someone to listen to me.">
+                            <span class="suggestion-icon">♡</span>
+                            <span>
+                                <strong>I just need to talk</strong>
+                                <small>Share whatever you're comfortable with.</small>
+                            </span>
+                        </button>
+
+                        <button class="suggestion-card" data-message="I'm struggling to stay motivated with my studies.">
+                            <span class="suggestion-icon">✦</span>
+                            <span>
+                                <strong>I'm feeling overwhelmed</strong>
+                                <small>Let's take things one step at a time.</small>
+                            </span>
+                        </button>
+
+                        <button class="suggestion-card" data-message="Can you help me calm my mind?">
+                            <span class="suggestion-icon">☼</span>
+                            <span>
+                                <strong>I need a little calm</strong>
+                                <small>Let's find a moment of peace.</small>
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Chat messages will appear here -->
+                <div class="messages-list" id="messagesList"></div>
+
+            </section>
+
+
+            <!-- Input Area -->
+            <footer class="chat-footer">
+
+                <div class="input-wrapper">
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Share what's on your mind..."
+                        rows="1"
+                        maxlength="4000"
+                        aria-label="Write your message"
+                    ></textarea>
+
+                    <button
+                        id="sendBtn"
+                        class="send-btn"
+                        aria-label="Send message"
+                        disabled
+                    >
+                        ↑
+                    </button>
+
+                </div>
+
+                <p class="disclaimer">
+                    Bippo is an AI companion, not a replacement for professional mental health care.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="chat.js"></script>
+
+</body>
+</html>
