@@ -3,7 +3,7 @@
 ========================================= */
 
 // AI backend URL (will be configured when backend is ready)
-const API_URL = "";
+const API_URL = " https://bippo-1.onrender.com/  ";
 
 // DOM elements
 const chatMessages = document.getElementById("chatMessages");
