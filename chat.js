@@ -1,9 +1,10 @@
+
 /* =========================================
    BIPPO — CHAT FUNCTIONALITY
 ========================================= */
 
-// AI backend URL (will be configured when backend is ready)
-const API_URL = " https://bippo-1.onrender.com/  ";
+// Backend URL
+const API_URL = "https://bippo-1.onrender.com/chat";
 
 // DOM elements
 const chatMessages = document.getElementById("chatMessages");
@@ -18,8 +19,7 @@ const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const historyBtn = document.getElementById("historyBtn");
 
-
-// Conversation memory (kept only while page is open)
+// Conversation memory
 let conversation = [];
 let isWaiting = false;
 
@@ -55,7 +55,6 @@ function addMessage(text, sender) {
     const bubble = document.createElement("div");
     bubble.className = "message-bubble";
 
-    // textContent prevents HTML injection
     bubble.textContent = text;
 
     const time = document.createElement("div");
@@ -125,6 +124,7 @@ function showTyping() {
 
 
 function removeTyping() {
+
     const typing = document.getElementById("typingMessage");
 
     if (typing) {
@@ -147,7 +147,6 @@ function updateSendButton() {
 
 messageInput.addEventListener("input", () => {
 
-    // Automatically adjust textarea height
     messageInput.style.height = "auto";
 
     messageInput.style.height =
@@ -174,24 +173,21 @@ messageInput.addEventListener("keydown", (event) => {
 
 
 // =========================================
-// SEND MESSAGE
+// SEND MESSAGE TO BACKEND
 // =========================================
 
 async function sendMessage(customMessage = null) {
 
     if (isWaiting) return;
 
-    const text = customMessage || messageInput.value.trim();
+    const text = (customMessage || messageInput.value).trim();
 
     if (!text) return;
 
-    // Display welcome screen only once
     welcomeScreen.style.display = "none";
 
-    // Display user's message
     addMessage(text, "user");
 
-    // Store conversation context
     conversation.push({
         role: "user",
         content: text
@@ -205,13 +201,7 @@ async function sendMessage(customMessage = null) {
 
     showTyping();
 
-
     try {
-
-        // AI backend has not been configured yet
-        if (!API_URL) {
-            throw new Error("AI_NOT_CONNECTED");
-        }
 
         const response = await fetch(API_URL, {
 
@@ -228,11 +218,9 @@ async function sendMessage(customMessage = null) {
 
         });
 
-
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
         }
-
 
         const data = await response.json();
 
@@ -241,11 +229,9 @@ async function sendMessage(customMessage = null) {
             data.message ||
             data.text;
 
-
         if (!reply || typeof reply !== "string") {
-            throw new Error("Invalid AI response");
+            throw new Error("Invalid backend response");
         }
-
 
         removeTyping();
 
@@ -258,36 +244,18 @@ async function sendMessage(customMessage = null) {
 
     }
 
-
     catch (error) {
 
         removeTyping();
 
         console.error("Bippo AI error:", error);
 
+        addMessage(
+            "I'm having trouble connecting right now. Please try again in a little while. ♡",
+            "bot"
+        );
 
-        let errorMessage;
-
-
-        if (error.message === "AI_NOT_CONNECTED") {
-
-            errorMessage =
-                "Hey, I'm Bippo! ♡ My AI connection is not set up yet, " +
-                "but my chat interface is ready. We'll connect my brain " +
-                "soon so I can properly listen and respond to you.";
-
-        } else {
-
-            errorMessage =
-                "I'm having trouble connecting right now. " +
-                "Your message hasn't been answered yet. " +
-                "Please try again in a little while. ♡";
-        }
-
-
-        addMessage(errorMessage, "bot");
     }
-
 
     finally {
 
