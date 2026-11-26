@@ -1,7 +1,10 @@
 
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import random
+import re
 
 app = FastAPI(title="Bippo AI")
 
@@ -16,38 +19,141 @@ class ChatRequest(BaseModel):
     message: str
     history: list = []
 
+
+def contains(message, keywords):
+    return any(
+        re.search(r"\b" + re.escape(word) + r"\b", message)
+        for word in keywords
+    )
+
+
+def pick(replies):
+    return random.choice(replies)
+
+
 @app.get("/")
 def home():
     return {"status": "Bippo brain is online"}
+
 
 @app.post("/chat")
 def chat(data: ChatRequest):
 
     message = data.message.strip().lower()
 
-    if not message:
-        reply = "I'm listening. Tell me what's on your mind."
+    # 1. CRISIS MODE — highest priority
+    crisis_words = [
+        "suicide", "kill myself", "end my life",
+        "end it all", "khudkushi", "marna chahti",
+        "marna chahta", "jeena nahi", "self harm",
+        "going to die"
+    ]
 
-    elif any(word in message for word in ["sad", "upset", "dukhi", "udaas"]):
-        reply = "I'm sorry you're feeling this way. Kya hua? Agar comfortable ho, toh mujhe bata sakte ho."
+    if contains(message, crisis_words):
+        reply = (
+            "Please, aisa mat karo. Jo bhi chal raha hai, "
+            "uska matlab ye nahi ki tumhari life khatam ho jaani chahiye. "
+            "Abhi kisi apne ke paas jao aur unhe clearly batao "
+            "ki tum kya feel kar rahi ho. Akele mat rehna. "
+            "Agar tumhe lag raha hai ki tum khud ko abhi nuksaan "
+            "pahuncha sakti ho, toh kisi trusted adult ko turant bulao "
+            "ya India mein 112 par call karo. "
+            "Mujhe bas ye batao, kya tum abhi safe ho?"
+        )
 
-    elif any(word in message for word in ["happy", "khush", "excited"]):
-        reply = "That's lovely! Kya achhi baat hui aaj?"
+    # 2. GREETING
+    elif contains(message, ["hi", "hello", "hey", "hii", "heyy"]):
+        reply = pick([
+            "YAYYYY! Dekho toh kaun aa gaya! 😽",
+            "Helloooo! Aaj kya special gossip hai? 🤭",
+            "Areyyy welcome back! Batao batao, kya chal raha hai? 😋"
+        ])
 
-    elif any(word in message for word in ["stress", "tension", "anxious", "worried"]):
-        reply = "It sounds like things feel overwhelming right now. Chalo, ek baar mein ek hi problem par focus karte hain. Sabse zyada tension kis baat ki hai?"
+    # 3. USER IS SAD
+    elif contains(message, ["sad", "upset", "dukhi", "udaas"]):
+        if "don't talk" in message or "mat baat" in message:
+            reply = pick([
+                "Achha, theek hai. Main force nahi karunga. "
+                "Bas jab mann kare, aa jaana. Aur haan, Explore section "
+                "dekha kya? Wahan kuch interesting pada hai. 🤭",
+                "Okayyy, thoda space chahiye toh le lo. "
+                "Main yahin hoon jab baat karne ka mann kare. 💜"
+            ])
+        else:
+            reply = pick([
+                "Arey, kya hua? Aaj ka din kuch zyada hi difficult tha kya?",
+                "Oh no. Batao na, kya baat pareshan kar rahi hai? "
+                "Aaram se sun raha hoon.",
+                "Hmm, kuch toh hua hai. Mann kare toh mujhe batao."
+            ])
 
-    elif any(word in message for word in ["hello", "hi", "hey"]):
-        reply = "Hey! I'm Bippo. How are you feeling today?"
+    # 4. ANGER
+    elif contains(message, ["angry", "gussa", "irritated", "annoyed"]):
+        reply = pick([
+            "Ohooo, kisne hamare system ko overheat kar diya? 😭",
+            "Achha ji, aaj toh gusse ka temperature high lag raha hai. "
+            "Kya hua?",
+            "Pehle batao kis baat par gussa aa raha hai. "
+            "Phir milkar investigation karenge. 😼"
+        ])
 
-    elif any(word in message for word in ["lonely", "alone", "akela"]):
-        reply = "Feeling lonely can be difficult. Kya aaj kuch hua, ya bas aisa feel ho raha hai?"
+    # 5. BOREDOM
+    elif contains(message, ["bored", "boring", "bore"]):
+        reply = pick([
+            "Toh boredom ki chhutti karwate hain! Explore section check kiya? 👽",
+            "WAIT. Ek random question poochun? Agar penguin school jaaye "
+            "toh lunchbox mein kya layega? 😭",
+            "Aaj kuch interesting karte hain. Riddle, fun fact ya mini game?"
+        ])
 
-    elif any(word in message for word in ["thank you", "thanks"]):
-        reply = "You're welcome! I'm glad you shared your thoughts with me."
+    # 6. STUDY
+    elif contains(message, ["study", "padhai", "exam", "homework"]):
+        reply = pick([
+            "Padhai se breakup ho gaya kya? 😭 Chalo ek topic se patch-up karte hain.",
+            "Achha, kitna syllabus pending hai? Ek-ek karke niptaate hain.",
+            "Study mode activated! Lekin pehle batao, kaunsa subject?"
+        ])
 
+    # 7. HAPPINESS
+    elif contains(message, ["happy", "khush", "excited", "yay"]):
+        reply = pick([
+            "AREYYYY! Ab jaldi batao, kya good news hai? 😽",
+            "YAYYY! Aaj toh vibes achhi lag rahi hain. Kya hua?",
+            "Ohooo, koi toh khush hai! Story timeee 🤭"
+        ])
+
+    # 8. LONELINESS
+    elif contains(message, ["lonely", "alone", "akela", "akeli"]):
+        reply = (
+            "Kabhi-kabhi aisa feel hona sach mein difficult hota hai. "
+            "Kya aaj kuch hua hai ya kuch time se aisa lag raha hai?"
+        )
+
+    # 9. THANK YOU
+    elif contains(message, ["thanks", "thank you", "thankyou"]):
+        reply = pick([
+            "Hehe, welcomeee! 😽",
+            "Arey, ismein thanks kaisa! 💜",
+            "Anytimeee! 🤌"
+        ])
+
+    # 10. BIPPO GETS TEASED
+    elif contains(message, ["pagal", "stupid", "crazy"]):
+        reply = pick([
+            "Thoda sa toh hoon. Lekin certified cute pagal. 😼",
+            "Excuse meee! Main ek sophisticated digital dimaag hoon. 😭",
+            "Achha ji, ab meri insult department bhi khul gayi?"
+        ])
+
+    # 11. DEFAULT REPLY
     else:
-        reply = "I hear you. Can you tell me a little more about it? I'm here to listen."
+        reply = pick([
+            "Achhaaa, phir kya hua? 👀",
+            "Hehe, aur batao. Main sun raha hoon.",
+            "WAIT, ye toh interesting hai. Thoda aur batao!",
+            "Ek baat bataun? Tumhari baatein kaafi unpredictable hain. 🤭",
+            "Hmm, samajhne ki koshish kar raha hoon. Phir kya hua?"
+        ])
 
     return {
         "reply": reply,
